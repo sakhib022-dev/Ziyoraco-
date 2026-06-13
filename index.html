@@ -92,7 +92,11 @@ grid.innerHTML+=`<div class="card"><img src="${p.img}"><div class="info"><h3>${p
 });
 const qtys=[1,1,1,1];
 function chg(i,v){qtys[i]=Math.max(1,qtys[i]+v);document.getElementById('q'+i).innerText=qtys[i]}
-function add(i){cart.push({...products[i],qty:qtys[i]});render()}
+function add(i){
+  const p = products[i];
+  const msg = `Hi Ziyoraco! I want to order:\n\nProduct: ${p.name}\nPrice: ₹${p.price}\n\nPlease confirm my order.`;
+  window.open(`https://wa.me/917032098002?text=${encodeURIComponent(msg)}`,'_blank');
+}
 function render(){
 let c=0,t=0,html='';
 cart.forEach((x,idx)=>{
@@ -117,6 +121,11 @@ form.reset();
 cart=[];render();
 }
 });
+  function orderOnWhatsApp(name, price) {
+  const number = '917032098002';
+  const msg = `Hi Ziyoraco! I want to order:\n\nProduct: ${name}\nPrice: ₹${price}\nQty: 1\n\nPlease confirm my order.`;
+  window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`,'_blank');
+  }
 </script>
 </body>
 </html>
